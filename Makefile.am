@@ -120,3 +120,16 @@ if HAS_GDB
 gdb: $(noinst_PROGRAMS)
 	$(gdb_verbose)$(GDB) --command=$(top_srcdir)/gdb.init main.elf
 endif
+
+##
+## Version
+##
+
+EXTRA_DIST += $(top_srcdir)/.version
+BUILT_SOURCES += $(top_srcdir)/.version
+
+$(top_srcdir)/.version:
+	echo $(VERSION) > $@-t && mv $@-t $@
+
+dist-hook:
+	echo $(VERSION) > $(distdir)/.tarball-version
