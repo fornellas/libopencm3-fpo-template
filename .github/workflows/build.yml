@@ -20,7 +20,7 @@ jobs:
         run: |
           mkdir _build/
           cd _build/
-          ../configure --host=arm-none-eabi --with-libopencm3=libopencm3/
+          ../configure --host=arm-none-eabi --with-libopencm3=../libopencm3/
       - name: make dist
         run: |
           make -C _build/ dist V=1
