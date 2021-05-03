@@ -14,6 +14,8 @@ jobs:
           git submodule update
       - name: Install APT dependencies
         run: sudo apt-get update && sudo apt-get -y install ${{env.APT_DEPS_AUTOTOOLS}} ${{env.APT_DEPS_LIBOPENCM3}}
+      - name: Build libopencm3
+        run: make -C libopencm3/
       - name: autogen.sh
         run: ./autogen.sh
       - name: configure
