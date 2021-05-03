@@ -5,6 +5,8 @@ STM_DFU_USB_PID=0xdf11
 OOCD_INTERFACE = stlink-v2
 OOCD_TARGET= stm32f4x
 
+BUILT_SOURCES =
+
 all: main.bin
 
 ##
