@@ -7,6 +7,8 @@ OOCD_TARGET= stm32f4x
 
 BUILT_SOURCES =
 
+SUBDIRS = eglib .
+
 .PHONY: libopencm3
 libopencm3:
 	$(MAKE) -C $(srcdir)/libopencm3/

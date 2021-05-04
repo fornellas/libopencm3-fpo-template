@@ -1,3 +1,6 @@
 [submodule "submodules/libopencm3"]
 	path = libopencm3
 	url = https://github.com/libopencm3/libopencm3.git
+[submodule "eglib"]
+	path = eglib
+	url = https://github.com/fornellas/eglib.git

@@ -31,14 +31,7 @@ AC_MSG_RESULT([ok])
 ## libopencm3
 ##
 
-# --with-libopencm3
-AC_ARG_WITH(
-	[libopencm3],
-	[AS_HELP_STRING([--with-libopencm3], [http://libopencm3.org/ built sources path @<:@default=no@:>@])],
-	[OPENCM3_DIR="$(cd "$with_libopencm3" && pwd)"],
-	AC_MSG_ERROR([Missing --with-libopencm3=\$OPENCM3_DIR]))
-AC_SUBST([OPENCM3_DIR], [$OPENCM3_DIR])
-# TODO Python for $(OPENCM3_DIR)/scripts/genlink.py
+AC_SUBST([OPENCM3_DIR], ["$(dirname "$0")/libopencm3"])
 # CFLAGS
 AC_MSG_CHECKING([required libopencm3 stm32f4 CFLAGS])
 CFLAGS_OPENCM3="$(make --silent -f ${srcdir}/build-aux/libopencm3.mk OPENCM3_DIR="$OPENCM3_DIR" DEVICE=stm32f4 ARCH_FLAGS)" || exit 1
@@ -55,6 +48,12 @@ AC_MSG_CHECKING([required libopencm3_stm32f4 CPPFLAGS])
 CPPFLAGS_OPENCM3="$(make --silent -f ${srcdir}/build-aux/libopencm3.mk OPENCM3_DIR="$OPENCM3_DIR" DEVICE=stm32f4 CPPFLAGS)" || exit 1
 AC_SUBST([CPPFLAGS_OPENCM3], [$CPPFLAGS_OPENCM3])
 AC_MSG_RESULT([ok])
+
+##
+## eglib
+##
+
+AX_SUBDIRS_CONFIGURE([eglib], [], [], [], [])
 
 ##
 ## Misc
