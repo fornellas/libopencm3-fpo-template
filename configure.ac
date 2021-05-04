@@ -31,7 +31,7 @@ AC_MSG_RESULT([ok])
 ## libopencm3
 ##
 
-AC_SUBST([OPENCM3_DIR], ["$(dirname "$0")/libopencm3"])
+AC_SUBST([OPENCM3_DIR], ["$(realpath "$(dirname "$0")")/libopencm3"])
 # CFLAGS
 AC_MSG_CHECKING([required libopencm3 stm32f4 CFLAGS])
 CFLAGS_OPENCM3="$(make --silent -f ${srcdir}/build-aux/libopencm3.mk OPENCM3_DIR="$OPENCM3_DIR" DEVICE=stm32f4 ARCH_FLAGS)" || exit 1
@@ -53,7 +53,7 @@ AC_MSG_RESULT([ok])
 ## eglib
 ##
 
-AX_SUBDIRS_CONFIGURE([eglib], [], [], [], [])
+AX_SUBDIRS_CONFIGURE([eglib], [], [], [--with-libopencm3="$OPENCM3_DIR"], [])
 
 ##
 ## Misc

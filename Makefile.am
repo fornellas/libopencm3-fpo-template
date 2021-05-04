@@ -19,6 +19,8 @@ clean-libopencm3:
 
 clean-local: clean-libopencm3
 
+all-recursive: libopencm3
+
 ##
 ## configure.ac dep
 ##
